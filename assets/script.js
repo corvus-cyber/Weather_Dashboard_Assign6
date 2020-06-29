@@ -15,7 +15,7 @@ $(document).ready(function(){
       list.addClass("list-group-item");
       $(".list-group").append(list)
     }
-    // Here we are building the URL we need to query the database
+    // Here we are building the URL we need to query the basic weather database
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=166a433c57516f51dfab1f7edaed8413";
 
     // Here we run our AJAX call to the OpenWeatherMap API
@@ -46,15 +46,25 @@ $(document).ready(function(){
         // add temp content to html
         $(".tempF").text("Temperature (F) " + tempF.toFixed(2)) + " °F";
 
-        //add uvi index to html
-        var uv = response.current.uvi;
-        
-
         // Log the data in the console as well
         console.log("Wind Speed: " + response.wind.speed + "MPH");
         console.log("Humidity: " + response.main.humidity + "%");
         console.log("Temperature (F): " + tempF + " °F");
       });
+    //Here we are building the URL we need to query the UV index
+    var uvQueryUrl= "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&appid=166a433c57516f51dfab1f7edaed8413";
+
+    //Here we run our uvindex Ajax call 
+    $.ajax({
+      url: uvQueryUrl,
+      method: "GET"
+    })
+    .then(function(response){
+      //add uvi index to html
+      var uv = response.current.uvi;
+      
+
+    })
   
   }
 
