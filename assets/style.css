@@ -5,7 +5,7 @@ body {
     font-size: 30px;
 }
 
-.weather-output {
+.col-9 {
     max-width: 90%;
     background-color: white;
     border-radius: 5px;
@@ -13,19 +13,25 @@ body {
     box-shadow: 0 0 20px; 
 }
 
+.output {
+
+}
 #city {
     font-size: 20px;
     color: black;
     font-family: 'Courier New', Courier, monospace ;
 }
 
-#good {
+.good {
     background-color: green;
+    color: white;
 }
-#ok {
+.ok {
     background-color: yellow;
+    color: white;
 }
-#bad {
+.bad {
     background-color: red;
+    color: white;
 }
   

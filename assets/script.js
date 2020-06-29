@@ -5,7 +5,7 @@ $(document).ready(function(){
   var currentDay = moment().format('MMMM Do YYYY');
   var currentDayOfWeek = moment().format("dddd");
   var currentInfo = " (" + currentDayOfWeek + ", " + currentDay + ")";
-  $("#date").text(currentInfo);
+  $(".date").text(currentInfo);
 
   //developWeather();
 
@@ -57,17 +57,17 @@ $(document).ready(function(){
           .then(function(response){
             //add uvi index to html
             var uv = response.current.uvi;
-            $("uv-container").text("UV Index: ");
+            $("#uv-container").text("UV Index:  ");
             console.log(uv);
             $("#uv-text").text(uv);
-            if ("#uv-text" > 3){
-              $("#uv-container").addClass("good")
+            if (uv > 3){
+              $("#uv-text").addClass("good")
             }
-            else if ("#uv-text" <7){
-              $("#uv-container").addClass("bad")
+            else if (uv < 7){
+              $("#uv-text").addClass("bad")
             }
             else {
-              $("#uv-container").addClass("ok")
+              $("#uv-text").addClass("ok")
             } 
           })
       });
