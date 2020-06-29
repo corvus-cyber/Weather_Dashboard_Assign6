@@ -60,10 +60,10 @@ $(document).ready(function(){
             $("#uv-container").text("UV Index:  ");
             console.log(uv);
             $("#uv-text").text(uv);
-            if (uv > 3){
+            if (uv < 3){
               $("#uv-text").addClass("good")
             }
-            else if (uv < 7){
+            else if (uv > 7){
               $("#uv-text").addClass("bad")
             }
             else {
