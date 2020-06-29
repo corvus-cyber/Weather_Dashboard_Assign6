@@ -19,4 +19,13 @@ body {
     font-family: 'Courier New', Courier, monospace ;
 }
 
+#good {
+    background-color: green;
+}
+#ok {
+    background-color: yellow;
+}
+#bad {
+    background-color: red;
+}
   
