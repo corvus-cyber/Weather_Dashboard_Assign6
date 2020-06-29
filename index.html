@@ -20,30 +20,38 @@
     <div class="container-fluid">
         <div class= "row m-2">
             <div class="col-3">
-                <h3>Search for a City</h3>
-                <!--Searching city form-->
-                <form class="form-inline">
-                    <div class="form mb-2">
-                    <label for="inputPassword2" class="sr-only">Password</label>
-                    <input type="text" class="form-control" id="inputPassword2" placeholder="Enter City Name">
-                    </div>
-                    <button type="submit" class="btn btn-primary mb-2 search">Search</button>
-                </form>
+                <div class="row">
+                    <h3>Search for a City</h3>
+                    <!--Searching city form-->
+                    <form class="form-inline">
+                        <div class="form mb-2">
+                        <label for="inputPassword2" class="sr-only">Password</label>
+                        <input type="text" class="form-control" id="inputPassword2" placeholder="Enter City Name">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2 search">Search</button>
+                    </form>
+                </div>
+                <div class="row search-history">
+                    <ul class="list-group m-4">
+                      <li class="list-group-item active">Your Favorite Cities</li>
+                    </ul>
+                    <!-- <p id="past-cities">Past Cities:</p> -->
+                </div>    
             </div>
             <!--Day of output column-->
             <div class="col-9">
                 <div class="row weather-output"><br>
                     <div class="city" id="city"></div>
+                    <div class="weather-image"></div>
                     <div class="temp"></div>
                     <div class="wind"></div>
                     <div class="humidity"></div>
                     <div class="UV"></div>
-                    
-
                 </div>
                 <!--Forecast row-->
-                <div class="row forecast">
-
+                <div class="row">
+                    <div class="forecast">
+                    </div>
                 </div>
             </div>
         </div>    
