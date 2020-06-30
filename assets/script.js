@@ -86,7 +86,11 @@ $(document).ready(function(){
               var forecastImg = $("<img>").attr("src", weatherImg);
               forecastCard.append(forecastImg);
               //set temperature for every day
-              var tempF = (response.daily[i].temp.day - 273.15) * 1.80 + 32;
+              var tempF = ((response.daily[i].temp.day - 273.15) * 1.80 + 32).toFixed(2);
+              var tempPar = $("<p>").text("Temp: " + tempF + " °F")
+              forecastCard.append(tempPar);
+              //set humidity for every day
+
               //Append the div to the html div
               $(".forecast").append(forecastCard);
 
