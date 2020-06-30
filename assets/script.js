@@ -70,15 +70,23 @@ $(document).ready(function(){
               $("#uv-text").addClass("ok")
             } 
             $(".forecast").empty();
+            //use a forloop to create a forecast of the next five days
             for (i = 1; i < 6; i++ ){
               var timeStamp = response.daily[i].dt * 1000;
+              //use moment.js to display the upcoming dates
               var dateLine = new Date(timeStamp);
               var calendar = {year: 'numeric', month: 'numeric', day: 'numeric'};
               var forecastTime = dateLine.toLocaleString("en-US", calendar);
               var forecastCard = $("<div>").addClass("timeCard");
               var insertTime = $("<p>").text(forecastTime);
+              //attach the date to the forecast div
               forecastCard.append(insertTime);
+              //now build and display weather image
+              var weatherImg = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
+              var forecastImg = $("<img>").attr("src", weatherImg);
+              forecastCard.append(forecastImg);
               $(".forecast").append(forecastCard);
+
             }
           })
       });
