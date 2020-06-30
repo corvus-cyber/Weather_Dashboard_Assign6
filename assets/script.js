@@ -82,9 +82,12 @@ $(document).ready(function(){
               //attach the date to the forecast div
               forecastCard.append(insertTime);
               //now build and display weather image
-              var weatherImg = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
+              var weatherImg = "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + "@2x.png";
               var forecastImg = $("<img>").attr("src", weatherImg);
               forecastCard.append(forecastImg);
+              //set temperature for every day
+              var tempF = (response.daily[i].temp.day - 273.15) * 1.80 + 32;
+              //Append the div to the html div
               $(".forecast").append(forecastCard);
 
             }
