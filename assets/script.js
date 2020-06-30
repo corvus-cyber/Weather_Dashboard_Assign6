@@ -1,10 +1,14 @@
 
 $(document).ready(function(){
-  var location;  
+  var location; 
+  //This is an array where we will store locations
+  var locationHistory = []; 
   var currentDay = moment().format('MMMM Do YYYY');
   var currentDayOfWeek = moment().format("dddd");
   var currentInfo = " (" + currentDayOfWeek + ", " + currentDay + ")";
   $(".date").text(currentInfo);
+  showLocalStorage();
+  
 
   //developWeather();
 
@@ -12,7 +16,9 @@ $(document).ready(function(){
     if (location!== ""){
       var list = $("<li>").text(location);
       list.addClass("list-group-item");
-      $(".list-group").append(list)
+      $(".list-group").append(list);
+      console.log(locationHistory)
+      localStorage.setItem("locationHistory", JSON.stringify(locationHistory));
     }
     // Here we are building the URL we need to query the basic weather database
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=166a433c57516f51dfab1f7edaed8413";
@@ -24,13 +30,10 @@ $(document).ready(function(){
     })
       // We store all of the retrieved data inside of an object called "response"
       .then(function(response) {
-
         // Log the queryURL
         console.log(queryURL);
-
         // Log the resulting object
         console.log(response);
-
         // Transfer content to HTML
         $(".city").text(response.name);
         var weatherImg = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
@@ -93,24 +96,37 @@ $(document).ready(function(){
               var humidity = $("<p>").text("Humidity: " + response.daily[i].humidity + " %");
               forecastCard.append(humidity);
               //Append the div to the html div
-              $(".forecast").append(forecastCard);
-              
+              $(".forecast").append(forecastCard);   
             }
           })
       });
-
-  
   }
 
 
   $(".search").click(function(){
     event.preventDefault();
     location = $("#cityName").val();
+    locationHistory.push(location);
     developWeather();
   })
 
-  $(".list-group-item").click(function(){
+  $("li").click(function(){
     location = $(this).text();
     developWeather();
   })
+
+  function showLocalStorage(){
+    $(".list-group").empty();
+    //locationHistory = JSON.parse(localStorage.getItem("locationHistory"));
+    if (locationHistory!= undefined){
+      locationHistory=JSON.parse(localStorage.getItem("locationHistory"));
+      location=locationHistory[locationHistory.length-1];
+    }
+    //create forloop to take from localStorarge and display on list
+    for (i=0; i < locationHistory.length; i++){
+      var list = $("<li>").text(locationHistory[i]);
+      list.addClass("list-group-item");
+      $(".list-group").append(list);
+    }
+  }
 })
