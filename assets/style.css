@@ -39,4 +39,12 @@ body {
     background-color: red;
     color: white;
 }
+
+.timeCard {
+    background-color: steelblue;
+    margin: 15px;
+    padding: 15px;
+    float: left;
+    border-radius: 5px;
+}
   

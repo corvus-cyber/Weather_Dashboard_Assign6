@@ -1,7 +1,6 @@
 
 $(document).ready(function(){
   var location;  
-  var APIKey = "166a433c57516f51dfab1f7edaed8413";
   var currentDay = moment().format('MMMM Do YYYY');
   var currentDayOfWeek = moment().format("dddd");
   var currentInfo = " (" + currentDayOfWeek + ", " + currentDay + ")";
@@ -60,6 +59,7 @@ $(document).ready(function(){
             $("#uv-container").text("UV Index:  ");
             console.log(uv);
             $("#uv-text").text(uv);
+            //We now colorcode the index
             if (uv < 3){
               $("#uv-text").addClass("good")
             }
@@ -70,6 +70,17 @@ $(document).ready(function(){
               $("#uv-text").addClass("ok")
             } 
           })
+          $(".forecast").empty();
+          for (i = 0; i < 4; i++ ){
+            var timeStamp = response.daily[i].dt * 1000;
+            var dateLine = new Date(timeStamp);
+            var calendar = {year: 'numeric', month: 'numeric', day: 'numeric'};
+            var forecastTime = dateLine.toLocaleString("en-US", calendar);
+            var forecastCard = $("<div>").addClass("timeCard");
+            var insertTime = $("<p>").text(forecastTime);
+            forecastCard.append(insertTime);
+            $(".forecast").append(forecastCard);
+          }
       });
 
   
