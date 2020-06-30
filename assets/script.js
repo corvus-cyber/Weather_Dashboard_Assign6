@@ -90,10 +90,10 @@ $(document).ready(function(){
               var tempPar = $("<p>").text("Temp: " + tempF + " °F")
               forecastCard.append(tempPar);
               //set humidity for every day
-
+              var humidity = $("<p>").text("Humidity: " + response.daily[i].humidity + " %");
+              forecastCard.append(humidity);
               //Append the div to the html div
               $(".forecast").append(forecastCard);
-
             }
           })
       });
