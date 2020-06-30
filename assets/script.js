@@ -69,18 +69,18 @@ $(document).ready(function(){
             else {
               $("#uv-text").addClass("ok")
             } 
+            $(".forecast").empty();
+            for (i = 1; i < 6; i++ ){
+              var timeStamp = response.daily[i].dt * 1000;
+              var dateLine = new Date(timeStamp);
+              var calendar = {year: 'numeric', month: 'numeric', day: 'numeric'};
+              var forecastTime = dateLine.toLocaleString("en-US", calendar);
+              var forecastCard = $("<div>").addClass("timeCard");
+              var insertTime = $("<p>").text(forecastTime);
+              forecastCard.append(insertTime);
+              $(".forecast").append(forecastCard);
+            }
           })
-          $(".forecast").empty();
-          for (i = 0; i < 4; i++ ){
-            var timeStamp = response.daily[i].dt * 1000;
-            var dateLine = new Date(timeStamp);
-            var calendar = {year: 'numeric', month: 'numeric', day: 'numeric'};
-            var forecastTime = dateLine.toLocaleString("en-US", calendar);
-            var forecastCard = $("<div>").addClass("timeCard");
-            var insertTime = $("<p>").text(forecastTime);
-            forecastCard.append(insertTime);
-            $(".forecast").append(forecastCard);
-          }
       });
 
   
