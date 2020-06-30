@@ -94,6 +94,7 @@ $(document).ready(function(){
               forecastCard.append(humidity);
               //Append the div to the html div
               $(".forecast").append(forecastCard);
+              
             }
           })
       });

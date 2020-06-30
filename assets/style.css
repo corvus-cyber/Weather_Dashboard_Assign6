@@ -4,7 +4,9 @@ body {
 .h1 {
     font-size: 30px;
 }
-
+.col-3 {
+    font-family: 'Courier New', Courier, monospace;
+}
 .col-9 {
     max-width: 90%;
     background-color: white;
