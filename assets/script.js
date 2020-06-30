@@ -10,10 +10,21 @@ $(document).ready(function(){
   showLocalStorage();
   
 
-  //developWeather();
 
-  function developWeather(){
-    if (location!== ""){
+  $(".search").click(function(){
+    event.preventDefault();
+    location = $("#cityName").val();
+    locationHistory.push(location);
+    developWeather(false);
+  })
+
+  $("li").click(function(){
+    location = $(this).text();
+    developWeather(true);
+  })
+
+  function developWeather(clicked){
+    if (location!== "" && clicked === false){
       var list = $("<li>").text(location);
       list.addClass("list-group-item");
       $(".list-group").append(list);
@@ -43,7 +54,7 @@ $(document).ready(function(){
         // Convert the temp to fahrenheit
         var tempF = (response.main.temp - 273.15) * 1.80 + 32;
         // add temp content to html
-        $(".tempF").text("Temperature (F) " + tempF.toFixed(2)) + " °F";
+        $(".tempF").text("Temperature (F) " + tempF.toFixed(2) + " °F");
         //Add latitude and longitude 
         var latitude = response.coord.lat;
         var longitude = response.coord.lon;
@@ -102,19 +113,6 @@ $(document).ready(function(){
       });
   }
 
-
-  $(".search").click(function(){
-    event.preventDefault();
-    location = $("#cityName").val();
-    locationHistory.push(location);
-    developWeather();
-  })
-
-  $("li").click(function(){
-    location = $(this).text();
-    developWeather();
-  })
-
   function showLocalStorage(){
     $(".list-group").empty();
     //locationHistory = JSON.parse(localStorage.getItem("locationHistory"));
@@ -122,6 +120,7 @@ $(document).ready(function(){
       locationHistory=JSON.parse(localStorage.getItem("locationHistory"));
       location=locationHistory[locationHistory.length-1];
     }
+    developWeather(false);
     //create forloop to take from localStorarge and display on list
     for (i=0; i < locationHistory.length; i++){
       var list = $("<li>").text(locationHistory[i]);
