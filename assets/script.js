@@ -84,6 +84,8 @@ $(document).ready(function(){
               $("#uv-text").addClass("ok")
             } 
             $(".forecast").empty();
+            var forecastH2 = $("<h2>").text("Five Day Forecast");
+            $(".forecast").append(forecastH2)
             //use a forloop to create a forecast of the next five days
             for (i = 1; i < 6; i++ ){
               var timeStamp = response.daily[i].dt * 1000;
