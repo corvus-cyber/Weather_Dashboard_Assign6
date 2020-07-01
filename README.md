@@ -15,12 +15,15 @@ The purpose of this assignment was to create a weather forecast scheduler that w
 # Problems I Encountered:
 * A major issue I encountered was that if the user chose a location from their favorite list, it would replicate the box again, creating a series of clone boxes. In order to resolve this, with the help of an instructional assistant I created an event within the developWeather function that only responds when the user enters info in the search form. 
 * Another issue was that in the forecast, the icons were just copies of the original icon. In order to fix this I needed to use response.daily[i].weather[0].icon.
-* When publishing the website, the functionality no longer worked because there was no location information saved within the localStorage. 
+* When publishing the website, the functionality no longer worked because there was no location information saved within the localStorage. In order to fix this, I set up a default item in localStorage so that there always be something to display.
 
 # What I Learned:
 * How to use a server-side api
+* How to use events within a function in order to dictate when to run other functions
+* How to set up clauses so that localstorage will have a default
 
 # Link: 
 https://corvus-cyber.github.io/Weather_Dashboard_Assign6/
 
 # Screenshot: 
+![screenshot of the application](.assets/image/Weather-dashboard.png)
