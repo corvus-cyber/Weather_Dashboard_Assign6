@@ -121,11 +121,12 @@ $(document).ready(function(){
 
   function showLocalStorage(){
     $(".list-group").empty();
-    //locationHistory = JSON.parse(localStorage.getItem("locationHistory"));
-    if (locationHistory!= undefined){
-      locationHistory=JSON.parse(localStorage.getItem("locationHistory"));
-      location=locationHistory[locationHistory.length-1];
-    }
+    locationHistory = JSON.parse(localStorage.getItem("locationHistory")); //try to get the location history out of localStorage.
+    if (!locationHistory) { //If there was none in localStorage
+     //put your default location here
+      locationHistory = ["Moscow"];
+      localStorage.setItem("locationHistory", locationHistory)}
+    location = locationHistory[locationHistory.length-1];
     developWeather(false);
     //create forloop to take from localStorarge and display on list
     for (i=0; i < locationHistory.length; i++){
@@ -134,4 +135,5 @@ $(document).ready(function(){
       $(".list-group").append(list);
     }
   }
+
 })
