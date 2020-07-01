@@ -123,9 +123,9 @@ $(document).ready(function(){
   function showLocalStorage(){
     $(".list-group").empty();
     locationHistory = JSON.parse(localStorage.getItem("locationHistory")); //try to get the location history out of localStorage.
-    if (!locationHistory) { //If there was none in localStorage
+    if (!locationHistory.length) { //If there was none in localStorage
      //put your default location here
-      location = "Moscow";
+      location = ["Moscow"];
       localStorage.setItem("locationHistory", JSON.stringify(locationHistory))
     }
     location = locationHistory[locationHistory.length-1];
