@@ -26,4 +26,4 @@ The purpose of this assignment was to create a weather forecast scheduler that w
 https://corvus-cyber.github.io/Weather_Dashboard_Assign6/
 
 # Screenshot: 
-![screenshot of the application](.assets/image/Weather-dashboard.png)
+![screenshot of the application](./assets/image/Weather-dashboard.png)
