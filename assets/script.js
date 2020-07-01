@@ -15,17 +15,18 @@ $(document).ready(function(){
     event.preventDefault();
     location = $("#cityName").val();
     locationHistory.push(location);
-    developWeather(false);
+    developWeather(true);
   })
 
   $("li").click(function(){
     location = $(this).text();
-    developWeather(true);
+    locationHistory.push(location);
+    developWeather(false);
   })
 
-  function developWeather(clicked){
+  function developWeather(saveSearch){
     //By creating an event and placing true/false to it, we will be able to prevent the buttons from replicating
-    if (location!== "" && clicked === false){
+    if (location !== "" && saveSearch){
       var list = $("<li>").text(location);
       list.addClass("list-group-item");
       //This will append the new search to the list
@@ -125,7 +126,8 @@ $(document).ready(function(){
     if (!locationHistory) { //If there was none in localStorage
      //put your default location here
       locationHistory = ["Moscow"];
-      localStorage.setItem("locationHistory", locationHistory)}
+      localStorage.setItem("locationHistory", locationHistory)
+    }
     location = locationHistory[locationHistory.length-1];
     developWeather(false);
     //create forloop to take from localStorarge and display on list
@@ -135,5 +137,5 @@ $(document).ready(function(){
       $(".list-group").append(list);
     }
   }
-
+  
 })
