@@ -125,8 +125,8 @@ $(document).ready(function(){
     locationHistory = JSON.parse(localStorage.getItem("locationHistory")); //try to get the location history out of localStorage.
     if (!locationHistory) { //If there was none in localStorage
      //put your default location here
-      locationHistory = ["Moscow"];
-      localStorage.setItem("locationHistory", locationHistory)
+      location = "Moscow";
+      localStorage.setItem("locationHistory", JSON.stringify(locationHistory))
     }
     location = locationHistory[locationHistory.length-1];
     developWeather(false);
@@ -137,5 +137,5 @@ $(document).ready(function(){
       $(".list-group").append(list);
     }
   }
-  
+
 })
