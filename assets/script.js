@@ -24,11 +24,14 @@ $(document).ready(function(){
   })
 
   function developWeather(clicked){
+    //By creating an event and placing true/false to it, we will be able to prevent the buttons from replicating
     if (location!== "" && clicked === false){
       var list = $("<li>").text(location);
       list.addClass("list-group-item");
+      //This will append the new search to the list
       $(".list-group").append(list);
       console.log(locationHistory)
+      //And place the search within the localStorage array
       localStorage.setItem("locationHistory", JSON.stringify(locationHistory));
     }
     // Here we are building the URL we need to query the basic weather database
@@ -83,6 +86,7 @@ $(document).ready(function(){
             else {
               $("#uv-text").addClass("ok")
             } 
+            //This will keep the forecast from replicating with every search
             $(".forecast").empty();
             var forecastH2 = $("<h2>").text("Five Day Forecast");
             $(".forecast").append(forecastH2)
